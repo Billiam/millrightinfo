@@ -1,113 +1,113 @@
 <!DOCTYPE html>
 <head>
-<title>MillRight CNC</title>
+  <title>MillRight CNC</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="./MillRight CNC_files/mytheme.css">
-<link rel="stylesheet" href="./MillRight CNC_files/jquery.mobile.icons.min.css">
-<link rel="stylesheet" href="./MillRight CNC_files/jquery.mobile.structure-1.4.5.min.css">
-<script src="./MillRight CNC_files/jquery-1.11.1.min.js"></script>
-<script src="./MillRight CNC_files/jquery.mobile-1.4.5.min.js"></script>
-<script src="./MillRight CNC_files/millrightcnccalc.js"></script>
-<script src="./MillRight CNC_files/js.cookie.js"></script>
-<style id="custom-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="./MillRight CNC_files/mytheme.css">
+  <link rel="stylesheet" href="./MillRight CNC_files/jquery.mobile.icons.min.css">
+  <link rel="stylesheet" href="./MillRight CNC_files/jquery.mobile.structure-1.4.5.min.css">
+  <script src="./MillRight CNC_files/jquery-1.11.1.min.js"></script>
+  <script src="./MillRight CNC_files/jquery.mobile-1.4.5.min.js"></script>
+  <script src="./MillRight CNC_files/millrightcnccalc.js"></script>
+  <script src="./MillRight CNC_files/js.cookie.js"></script>
+  <style id="custom-icon">
 
-  .ui-icon-gear:after {
-    background-image: url("./MillRight CNC_files/images/gear30.png");
-    /* Make your icon fit */
-    background-size: 30px !important;
-    width: 30px;
-    height: 30px;
-  }
+    .ui-icon-gear:after {
+      background-image: url("./MillRight CNC_files/images/gear30.png");
+      /* Make your icon fit */
+      background-size: 30px !important;
+      width: 30px;
+      height: 30px;
+    }
 
-  .ui-icon-clock:after {
-    background-image: url("./MillRight CNC_files/images/clock30.png");
-    /* Make your icon fit */
-    background-size: 30px !important;
-    width: 30px;
-    height: 30px;
-  }
+    .ui-icon-clock:after {
+      background-image: url("./MillRight CNC_files/images/clock30.png");
+      /* Make your icon fit */
+      background-size: 30px !important;
+      width: 30px;
+      height: 30px;
+    }
 
-  .ui-icon-calc:after {
-    background-image: url("./MillRight CNC_files/images/calc30.png");
-    /* Make your icon fit */
-    background-size: 30px !important;
-    width: 30px;
-    height: 30px;
-  }
+    .ui-icon-calc:after {
+      background-image: url("./MillRight CNC_files/images/calc30.png");
+      /* Make your icon fit */
+      background-size: 30px !important;
+      width: 30px;
+      height: 30px;
+    }
 
-  .ui-icon-tune:after {
-    background-image: url("./MillRight CNC_files/images/finetune30.png");
-    /* Make your icon fit */
-    background-size: 30px !important;
-    width: 30px;
-    height: 30px;
-  }
+    .ui-icon-tune:after {
+      background-image: url("./MillRight CNC_files/images/finetune30.png");
+      /* Make your icon fit */
+      background-size: 30px !important;
+      width: 30px;
+      height: 30px;
+    }
 
-  .ui-icon-code:after {
-    background-image: url("./MillRight CNC_files/images/code30.png");
-    /* Make your icon fit */
-    background-size: 30px !important;
-    width: 30px;
-    height: 30px;
-  }
+    .ui-icon-code:after {
+      background-image: url("./MillRight CNC_files/images/code30.png");
+      /* Make your icon fit */
+      background-size: 30px !important;
+      width: 30px;
+      height: 30px;
+    }
 
-  .ui-icon-convert:after {
-    background-image: url("./MillRight CNC_files/images/convert30.png");
-    /* Make your icon fit */
-    background-size: 30px !important;
-    width: 30px;
-    height: 30px;
-  }
+    .ui-icon-convert:after {
+      background-image: url("./MillRight CNC_files/images/convert30.png");
+      /* Make your icon fit */
+      background-size: 30px !important;
+      width: 30px;
+      height: 30px;
+    }
 
-  .ui-icon-finish:after {
-    background-image: url("./MillRight CNC_files/images/finish30.png");
-    /* Make your icon fit */
-    background-size: 30px !important;
-    width: 30px;
-    height: 30px;
-  }
+    .ui-icon-finish:after {
+      background-image: url("./MillRight CNC_files/images/finish30.png");
+      /* Make your icon fit */
+      background-size: 30px !important;
+      width: 30px;
+      height: 30px;
+    }
 
-  .ui-icon-search30:after {
-    background-image: url("./MillRight CNC_files/images/search30.png");
-    /* Make your icon fit */
-    background-size: 30px !important;
-    width: 30px;
-    height: 30px;
-  }
+    .ui-icon-search30:after {
+      background-image: url("./MillRight CNC_files/images/search30.png");
+      /* Make your icon fit */
+      background-size: 30px !important;
+      width: 30px;
+      height: 30px;
+    }
 
-  .ui-icon-video30:after {
-    background-image: url("./MillRight CNC_files/images/video30.png");
-    /* Make your icon fit */
-    background-size: 30px !important;
-    width: 30px;
-    height: 30px;
-  }
+    .ui-icon-video30:after {
+      background-image: url("./MillRight CNC_files/images/video30.png");
+      /* Make your icon fit */
+      background-size: 30px !important;
+      width: 30px;
+      height: 30px;
+    }
 
-  .ui-icon-control:after {
-    background-image: url("./MillRight CNC_files/images/control30.png");
-    /* Make your icon fit */
-    background-size: 30px !important;
-    width: 30px;
-    height: 30px;
-  }
+    .ui-icon-control:after {
+      background-image: url("./MillRight CNC_files/images/control30.png");
+      /* Make your icon fit */
+      background-size: 30px !important;
+      width: 30px;
+      height: 30px;
+    }
 
-  .center {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    margin: auto;
-  }
+    .center {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+      margin: auto;
+    }
 
-  .video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
+    .video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 
 <!-- Start of #home -->
@@ -421,10 +421,9 @@
       </tr>
       </tbody>
     </table>
+  
     <p></p>
-
     <p></p>
-
     <div>
       <label for="gcodeInput">G Code:</label>
       <input type="text" name="gcodeInput" id="gcodeInput" placeholder="Type G Code Here (example G0, or G28)" value="">
@@ -593,8 +592,6 @@
         <label for="cutSpeed_2">SFPM</label>
       </div>
       <table border="0" cellspacing="0" width="100%">
-
-
         <thead>
         <tr>
           <th width="33%">Diameter-inches</th>
@@ -655,4 +652,5 @@
 <div class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span class="ui-icon-loading"></span>
   <h1>loading</h1>
 </div>
-</body></html>
+</body>
+</html>
