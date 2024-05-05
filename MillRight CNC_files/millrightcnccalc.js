@@ -58,7 +58,7 @@ $(document).ready(function() {
 		var machineValue = localStorage.getItem('Machine');
 		if (machineValue) {
 			$('.desc').hide();
-			$('.desc#Machine'+machineValue).show();
+			$('.desc#Machine'+machineValue.replace(/\./g, 'x')).show();
 		}
 	}
 });
