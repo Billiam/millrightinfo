@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<head>
+<title>MillRight CNC</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="./MillRight CNC_files/mytheme.css">
+<link rel="stylesheet" href="./MillRight CNC_files/jquery.mobile.icons.min.css">
+<link rel="stylesheet" href="./MillRight CNC_files/jquery.mobile.structure-1.4.5.min.css">
+<script src="./MillRight CNC_files/jquery-1.11.1.min.js"></script>
+<script src="./MillRight CNC_files/jquery.mobile-1.4.5.min.js"></script>
+<script src="./MillRight CNC_files/millrightcnccalc.js"></script>
+<script src="./MillRight CNC_files/js.cookie.js"></script>
+<style id="custom-icon">
+
+  .ui-icon-gear:after {
+    background-image: url("./MillRight CNC_files/images/gear30.png");
+    /* Make your icon fit */
+    background-size: 30px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .ui-icon-clock:after {
+    background-image: url("./MillRight CNC_files/images/clock30.png");
+    /* Make your icon fit */
+    background-size: 30px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .ui-icon-calc:after {
+    background-image: url("./MillRight CNC_files/images/calc30.png");
+    /* Make your icon fit */
+    background-size: 30px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .ui-icon-tune:after {
+    background-image: url("./MillRight CNC_files/images/finetune30.png");
+    /* Make your icon fit */
+    background-size: 30px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .ui-icon-code:after {
+    background-image: url("./MillRight CNC_files/images/code30.png");
+    /* Make your icon fit */
+    background-size: 30px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .ui-icon-convert:after {
+    background-image: url("./MillRight CNC_files/images/convert30.png");
+    /* Make your icon fit */
+    background-size: 30px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .ui-icon-finish:after {
+    background-image: url("./MillRight CNC_files/images/finish30.png");
+    /* Make your icon fit */
+    background-size: 30px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .ui-icon-search30:after {
+    background-image: url("./MillRight CNC_files/images/search30.png");
+    /* Make your icon fit */
+    background-size: 30px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .ui-icon-video30:after {
+    background-image: url("./MillRight CNC_files/images/video30.png");
+    /* Make your icon fit */
+    background-size: 30px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .ui-icon-control:after {
+    background-image: url("./MillRight CNC_files/images/control30.png");
+    /* Make your icon fit */
+    background-size: 30px !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .center {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin: auto;
+  }
+
+  .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</head>
+
+<!-- Start of #home -->
+<div data-role="page" id="home" data-url="home" tabindex="0"
+     class="ui-page ui-page-theme-a ui-page-header-fixed ui-page-footer-fixed ui-page-active"
+     style="padding-top: 45px; padding-bottom: 45px;">
+
+  <div data-role="content" class="ui-content" role="main">
+    <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+    <center><h4></h4></center>
+    <table align="center" width="50%" cellpadding="0" border="0">
+      <tbody>
+      <tr>
+        <td align="center"><a href="#settings" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-gear"
+                              data-transition="slide">Settings</a></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="center-div td-center" style="width:100%">
+      <table align="center" width="50%" cellpadding="0" border="0">
+        <tbody>
+        <tr>
+          <td width="50%"><a href="#calc" class="ui-btn ui-shadow ui-corner-left ui-btn-icon-top ui-icon-calc"
+                             data-transition="slide">Feedrate Calc</a></td>
+          <td width="50%"><a href="#tune" class="ui-btn ui-shadow ui-corner-right  ui-icon-tune ui-btn-icon-top"
+                             data-transition="slide">Fine Tune CNC</a></td>
+        </tr>
+        <tr>
+          <td width="50%"><a href="#finish" class="ui-btn ui-shadow ui-corner-left  ui-icon-finish ui-btn-icon-top"
+                             data-transition="slide">Ball Endmill Finish</a></td>
+          <td width="50%"><a href="#convert" class="ui-btn ui-shadow ui-corner-right  ui-icon-convert ui-btn-icon-top"
+                             data-transition="slide">Inches/MM</a></td>
+        </tr>
+        <tr>
+          <td width="50%"><a href="#sfpm" class="ui-btn ui-shadow ui-corner-left  ui-icon-calc ui-btn-icon-top"
+                             data-transition="slide">SFM Calc</a></td>
+          <td width="50%"><a href="#time" class="ui-btn ui-shadow ui-corner-right  ui-icon-clock ui-btn-icon-top"
+                             data-transition="slide">Time Calc</a></td>
+        </tr>
+        <tr>
+          <td width="50%"><a href="#gcode"
+                             class="ui-btn ui-shadow ui-corner-left ui-corner-right  ui-icon-code ui-btn-icon-top"
+                             data-transition="slide">GCode</a></td>
+          <td width="50%">&nbsp;</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div><!-- /content -->
+</div><!-- /page home -->
+
+
+<!-- Start of #calc -->
+<div data-role="page" id="calc" data-url="calc">
+  <div data-role="header" data-position="fixed">
+    <h1>MillRight CNC</h1>
+    <a href="#home" data-role="button" data-icon="home" data-iconshadow="false" onclick="empty()"
+       data-direction="reverse" data-transition="slide" data-iconpos="left" class="ui-btn-left">Home</a>
+  </div>
+
+  <div data-role="content">
+
+    <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+    <center><h4>Feedrate Calculator</h4></center>
+
+    <strong>Machine:</strong>
+    <div id="Machine0" class="desc" style="display: none;">
+      M3 Selected
+    </div>
+    <div id="Machine1" class="desc">
+      Carve King Selected
+    </div>
+    <div id="Machine2" class="desc" style="display: none;">
+      Power Route Selected
+    </div>
+
+    <p></p>
+    <strong>Cutter Size:</strong>
+    <div data-role="controlgroup" data-type="horizontal">
+
+      <input type="radio" name="Cutter" id="CutterA" value="0">
+      <label for="CutterA">1/16"</label>
+      <input type="radio" name="Cutter" id="CutterB" value="1" checked="checked">
+      <label for="CutterB">1/8"</label>
+      <input type="radio" name="Cutter" id="CutterC" value="2">
+      <label for="CutterC">3/16"</label>
+      <input type="radio" name="Cutter" id="CutterD" value="3">
+      <label for="CutterD">1/4"</label>
+    </div>
+    <div data-role="controlgroup" data-type="horizontal">
+      <input type="radio" name="Cutter" id="CutterE" value="0">
+      <label for="CutterE">2mm</label>
+      <input type="radio" name="Cutter" id="CutterF" value="1">
+      <label for="CutterF">3mm</label>
+      <input type="radio" name="Cutter" id="CutterG" value="2">
+      <label for="CutterG">5mm</label>
+      <input type="radio" name="Cutter" id="CutterH" value="3">
+      <label for="CutterH">6mm</label>
+    </div>
+
+    <strong>Number of Flutes:</strong>
+    <div data-role="controlgroup" data-type="horizontal">
+
+      <input type="radio" name="Flutes" id="FlutesA" value="1" checked="checked">
+      <label for="FlutesA">1</label>
+      <input type="radio" name="Flutes" id="FlutesB" value="2">
+      <label for="FlutesB">2</label>
+      <input type="radio" name="Flutes" id="FlutesC" value="3">
+      <label for="FlutesC">3</label>
+      <input type="radio" name="Flutes" id="FlutesD" value="4">
+      <label for="FlutesD">4</label>
+    </div>
+
+    <strong>Aggression:</strong>
+    <div data-role="controlgroup" data-type="horizontal">
+
+      <input type="radio" name="Aggression" id="AggressionA" value="Slow" checked="checked">
+      <label for="AggressionA">Conservative</label>
+      <input type="radio" name="Aggression" id="AggressionB" value="Medium">
+      <label for="AggressionB">Normal</label>
+      <input type="radio" name="Aggression" id="AggressionC" value="Fast">
+      <label for="AggressionC">Aggressive</label>
+    </div>
+
+    <div>
+
+      <strong>RPM:</strong>
+      <input type="range" name="Speed" id="Speed" data-highlight="true" min="8000" max="26000" step="10" value="8000"
+             list="steplist">
+      <datalist id="steplist">
+        <option>0</option>
+        <option>25</option>
+        <option>50</option>
+        <option>75</option>
+        <option>100</option>
+      </datalist>
+    </div>
+
+    <div>
+      <strong>Material:</strong>
+      <select id="Material">
+        <option value="Aluminum">Aluminum (6061)</option>
+        <option value="Hard_Plastic">Hard Plastic (i.e. acrylic, pvc)</option>
+        <option value="Hardwood">Hardwood (i.e. maple, oak, walnut)</option>
+        <option value="MDF">MDF</option>
+        <option value="Soft_Plastic">Soft Plastic (i.e. abs, styrofoam)</option>
+        <option value="Softwood">Softwood (i.e. pine, cedar, fir)</option>
+      </select>
+    </div>
+
+
+    <input type="button" onclick="calculate()" value="Calculate">
+
+    <div class="ui-grid-b">
+      <div class="ui-block-a"><strong>Feedrate:</strong>
+        <textarea rows="1" cols="30" id="feedRateInchesArea" name="fritextarea"></textarea>
+      </div>
+      <div class="ui-block-b"><strong>Depth of Cut:</strong>
+        <textarea rows="1" cols="30" id="depthOfCutArea" name="doctextarea"></textarea>
+      </div>
+      <div class="ui-block-c"><strong>Chip Load:</strong>
+        <textarea rows="1" cols="30" id="chipLoadArea" name="cltextarea"></textarea>
+      </div>
+    </div>
+  </div><!-- /content -->
+</div><!-- /calc -->
+
+
+<!-- Start of #tune -->
+<div data-role="page" id="tune" data-url="tune">
+
+  <div data-role="header" data-position="fixed">
+    <h1>MillRight CNC</h1>
+    <a href="#home" data-role="button" data-icon="home" data-iconshadow="false" onclick="empty()"
+       data-direction="reverse" data-transition="slide" data-iconpos="left" class="ui-btn-left">Home</a>
+  </div>
+
+  <div data-role="content" data-theme="a">
+    <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+    <center><h4>Fine Tuning Calculations for Grbl Firmware</h4></center>
+    <ul>
+      <li>First model a 100x100mm square</li>
+      <li>Measure your end mill and confirm it's cutting diameter.<br>
+        <strong>(Your CAM package must know the correct diameter. Don't Assume. Measure.)</strong></li>
+      <li>Run the operation and measure the X and Y directions.</li>
+      <li>Input the info below and press Calculate</li>
+    </ul>
+    <p></p>
+    <hr>
+    <p></p>
+    <div class="ui-grid-b">
+      <div class="ui-block-a">
+        <label for="expectedX">X Expected Dist.:</label>
+        <input type="number" name="expectedX" id="expectedX" value="100">
+      </div>
+      <div class="ui-block-b">
+        <label for="actualX">X Actual Dist.:</label>
+        <input type="number" name="actualX" id="actualX" value="100">
+      </div>
+      <div class="ui-block-c">
+        <label for="stepsX">X steps/mm:</label>
+        <input type="number" name="stepsX" id="stepsX" value="">
+      </div>
+      <div class="ui-block-a">
+        <label for="expectedY">Y Expected Dist.:</label>
+        <input type="number" name="expectedY" id="expectedY" value="100">
+      </div>
+      <div class="ui-block-b">
+        <label for="actualY">Y Actual Dist.:</label>
+        <input type="number" name="actualY" id="actualY" value="100">
+      </div>
+      <div class="ui-block-c">
+        <label for="stepsY">Y steps/mm:</label>
+        <input type="number" name="stepsY" id="stepsY" value="">
+      </div>
+    </div>
+    <p></p>
+
+    <input type="button" onclick="calculateTune()" value="Calculate">
+
+    <p></p>
+    <div class="ui-grid-a">
+      <div class="ui-block-a">
+        <label for="errorX"> Percent X Error:</label>
+        <textarea cols="40" rows="1" name="errorX" id="errorX"></textarea>
+      </div>
+      <div class="ui-block-b">
+        <label for="errorY">Percent Y Error:</label>
+        <textarea cols="40" rows="1" name="errorY" id="errorY"></textarea>
+      </div>
+      <div class="ui-block-a">
+        <label for="correctedX">Corrected X steps/mm:</label>
+        <textarea cols="40" rows="1" name="correctedX" id="correctedX"></textarea>
+      </div>
+      <div class="ui-block-b">
+        <label for="correctedY">Corrected Y steps/mm:</label>
+        <textarea cols="40" rows="1" name="correctedY" id="correctedY"></textarea>
+      </div>
+      <div class="ui-block-a">
+        <label for="gcodeX">Type the below into GCode Console for X Correction</label>
+        <textarea cols="40" rows="1" name="gcodeX" id="gcodeX"></textarea>
+      </div>
+      <div class="ui-block-b">
+        <label for="gcodeY">Type the below into GCode Console for Y Correction</label>
+        <textarea cols="40" rows="1" name="gcodeY" id="gcodeY"></textarea>
+      </div>
+    </div>
+
+
+  </div><!-- /content -->
+</div><!-- /#tune -->
+
+
+<!-- Start of  #convert -->
+<div data-role="page" id="convert" data-url="convert">
+
+  <div data-role="header" data-position="fixed">
+    <h1>MillRight CNC</h1>
+    <a href="#home" data-role="button" data-icon="home" data-iconshadow="false" onclick="empty()"
+       data-direction="reverse" data-transition="slide" data-iconpos="left" class="ui-btn-left">Home</a>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+    <center><h4>Convert Inches / Millimeters</h4></center>
+    <div>
+      <label>Inches:</label>
+      <input id="inputInches" class="w3-input w3-border" type="number" placeholder="inches"
+             oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+    </div>
+    <div>
+      <label>Millimeters:</label>
+      <input id="inputmm" class="w3-input w3-border" type="number" placeholder="mm"
+             oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+    </div>
+  </div><!-- /content -->
+</div><!-- /page convert -->
+
+
+<!-- Start of  #gcode -->
+<div data-role="page" id="gcode" data-url="gcode">
+
+  <div data-role="header" data-position="fixed">
+    <h1>MillRight CNC</h1>
+    <a href="#home" data-role="button" data-icon="home" data-iconshadow="false" onclick="empty()"
+       data-direction="reverse" data-transition="slide" data-iconpos="left" class="ui-btn-left">Home</a>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+    <center><h4>G Code Reference</h4></center>
+    <strong>Word Addresses:</strong>
+    <table width="75%" border="0" padding="6">
+      <tbody>
+      <tr>
+        <td><strong>X##</strong>&nbsp;= X position</td>
+        <td><strong>Y##</strong>&nbsp;= Y position</td>
+        <td><strong>Z##</strong>&nbsp;= Z position</td>
+      </tr>
+      <tr>
+        <td><strong>I##</strong>&nbsp;= X arc center</td>
+        <td><strong>J##</strong>&nbsp;= Y arc center</td>
+        <td><strong>K##</strong>&nbsp;= Z arc center</td>
+      </tr>
+      <tr></tr>
+      <tr></tr>
+      <tr>
+        <td><strong>F##</strong>&nbsp;= feedrate</td>
+        <td><strong>P##</strong>&nbsp;= dwell time in 10000th sec</td>
+      </tr>
+      </tbody>
+    </table>
+    <p></p>
+
+    <p></p>
+
+    <div>
+      <label for="gcodeInput">G Code:</label>
+      <input type="text" name="gcodeInput" id="gcodeInput" placeholder="Type G Code Here (example G0, or G28)" value="">
+    </div>
+    <div>
+      <input type="button" onclick="gcodeDefine()" value="Search">
+    </div>
+    <p></p>
+    <hr>
+    <p></p>
+    <div>
+      <label for="parametersArea">Parameters:</label>
+      <input type="text" name="parametersArea" id="parametersArea" value="">
+      <label for="defineArea">Definition:</label>
+      <textarea name="defineArea" id="defineArea"></textarea>
+      <label for="exampleArea">Example:</label>
+      <input type="text" name="exampleArea" id="exampleArea" value="">
+    </div>
+
+
+  </div><!-- /content -->
+</div><!-- /page gcode -->
+
+<!-- Start of  #finish -->
+<div data-role="page" id="finish" data-url="finish">
+
+  <div data-role="header" data-position="fixed">
+    <h1>MillRight CNC</h1>
+    <a href="#home" data-role="button" data-icon="home" data-iconshadow="false" onclick="empty()"
+       data-direction="reverse" data-transition="slide" data-iconpos="left" class="ui-btn-left">Home</a>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <form name="finish">
+      <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+      <center><h4>Ball Mill Finish Calculator</h4></center>
+
+      Enter the tool diameter and surface angle<br><br>
+      How to calculate values:<br>
+
+      To calculate the stepover distance, enter the scallop height and click Calculate Stepover<br>
+      To calculate the scallop height, enter the stepover distance and click Calculate Scallop<br>
+      <p></p>
+      <hr>
+      <p></p>
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          <label>Tool Diameter (in.):</label>
+          <input name="dia" type="number" value="0.25">
+        </div>
+        <div class="ui-block-b">
+          <label>Surface Angle (degrees):</label>
+          <input name="angle" type="text" value="0">
+        </div>
+        <div class="ui-block-a">
+          <label>Stepover Distance (in.):</label>
+          <input name="stepover" type="text" value="0.125">
+          <input type="button" value="Calculate Stepover" name="stepcalc" onclick="steppick()">
+        </div>
+        <div class="ui-block-b">
+          <label>Scallop Height (in.):</label>
+          <input name="scallop" type="text" value="0.0167">
+          <input type="button" value="Calculate Scallop" name="scalcalc" onclick="scalpick()">
+        </div>
+      </div>
+      <table border="0" cellspacing="0" width="100%">
+
+
+      </table>
+    </form>
+
+  </div>
+</div><!-- /page finish -->
+
+
+<!-- Start of #settings -->
+<div data-role="page" id="settings" data-url="settings">
+
+  <div data-role="header" data-position="fixed">
+    <h1>MillRight CNC</h1>
+    <a href="#home" data-role="button" data-icon="arrow-l" data-iconshadow="false" data-direction="reverse"
+       onclick="empty()" data-transition="slide" data-iconpos="left" class="ui-btn-left">Back</a>
+  </div>
+
+  <div data-role="content">
+    <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+    <center><h4>Settings</h4></center>
+    <strong>Machine</strong>
+    <div data-role="controlgroup" data-type="horizontal">
+
+      <input type="radio" name="Machine" id="MachineA" value="0">
+      <label for="MachineA">M3</label>
+      <input type="radio" name="Machine" id="MachineB" value="1">
+      <label for="MachineB">Carve King</label>
+      <input type="radio" name="Machine" id="MachineMV" value="1.5" checked="checked">
+      <label for="MachineMV">Mega V</label>
+      <input type="radio" name="Machine" id="MachineC" value="2">
+      <label for="MachineC">Power Route</label>
+    </div>
+    <strong>Units</strong>
+    <div data-role="controlgroup" data-type="horizontal">
+
+      <input type="radio" name="Units" id="unitsA" value="0">
+      <label for="unitsA">Inches</label>
+      <input type="radio" name="Units" id="unitsB" value="1" checked="checked">
+      <label for="unitsB">MM</label>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /page settings -->
+
+
+<!-- Start of  #control -->
+<div data-role="page" id="tut_control" data-url="tut_control">
+
+  <div data-role="header" data-position="fixed">
+    <h1>MillRight CNC</h1>
+    <a href="#tutorials" data-role="button" data-icon="arrow-l" data-iconshadow="false" onclick="empty()"
+       data-direction="reverse" data-transition="slide" data-iconpos="left" class="ui-btn-left">Back</a>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+    <center><h4>Machine Control Tutorials</h4></center>
+  </div><!-- /content -->
+</div><!-- /page control -->
+
+
+<!-- Start of  #hardware -->
+<div data-role="page" id="tut_setup" data-url="tut_setup">
+
+  <div data-role="header" data-position="fixed">
+    <h1>MillRight CNC</h1>
+    <a href="#tutorials" data-role="button" data-icon="arrow-l" data-iconshadow="false" onclick="empty()"
+       data-direction="reverse" data-transition="slide" data-iconpos="left" class="ui-btn-left">Back</a>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+    <center><h4>Machine Setup Tutorials</h4></center>
+
+  </div><!-- /content -->
+</div><!-- /page hardware -->
+
+
+<!-- Start of  #SFPM -->
+<div data-role="page" id="sfpm" data-url="sfpm">
+  <div data-role="header" data-position="fixed">
+    <h1>MillRight CNC</h1>
+    <a href="#home" data-role="button" data-icon="home" data-iconshadow="false" onclick="empty()"
+       data-direction="reverse" data-transition="slide" data-iconpos="left" class="ui-btn-left">Home</a>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <form name="myForm1" onsubmit="return false;">
+      <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+      <center><h4>Surface Feet Per Minute (SFPM) = (π * Diameter * RPM) / 12 </h4></center>
+      <p></p>
+      <div data-role="controlgroup" data-type="horizontal">
+        <legend>Solve for:</legend>
+        <input type="radio" name="cutSpeed" id="cutSpeed_0" value="1">
+        <label for="cutSpeed_0">Diameter</label>
+        <input type="radio" name="cutSpeed" id="cutSpeed_1" value="2">
+        <label for="cutSpeed_1">RPM</label>
+        <input type="radio" name="cutSpeed" id="cutSpeed_2" value="3" checked="checked">
+        <label for="cutSpeed_2">SFPM</label>
+      </div>
+      <table border="0" cellspacing="0" width="100%">
+
+
+        <thead>
+        <tr>
+          <th width="33%">Diameter-inches</th>
+          <th width="34%">RPM</th>
+          <th width="33%">SFPM</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td width="33%" align="center">
+            <input name="spfm_1" id="spfm_1" value="" type="number">
+          </td>
+          <td width="34%" align="center">
+            <input name="spfm_2" id="spfm_2" value="" type="number">
+          </td>
+          <td width="33%" align="center">
+            <input name="spfm_3" id="spfm_3" value="" type="number">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <input type="button" name="btnCalcSFPM" onclick="calcSFPM()" value="Calculate">
+    </form>
+  </div>
+</div>
+
+
+<!-- Start of  #time -->
+<div data-role="page" id="time" data-url="time">
+
+  <div data-role="header" data-position="fixed">
+    <h1>MillRight CNC</h1>
+    <a href="#home" data-role="button" data-icon="home" data-iconshadow="false" onclick="empty()"
+       data-direction="reverse" data-transition="slide" data-iconpos="left" class="ui-btn-left">Home</a>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <center><img src="./MillRight CNC_files/logo.png" width="180" height="67" alt="millrightlogo"></center>
+    <center><h4>Cutting Time</h4></center>
+    <div>
+      <label>Workpiece Length</label>
+      <input id="wpl" class="w3-input w3-border" type="number" placeholder="Length in Inches" value="">
+    </div>
+    <div>
+      <label>Cutting Length per Minute</label>
+      <input id="clpm" class="w3-input w3-border" type="number" placeholder="Length in Inches" value="">
+    </div>
+    <input type="button" name="btnCalcSFPM" onclick="cutTime()" value="Calculate">
+    <div>
+      <label>Cutting Time</label>
+      <input name="cuttingTime" id="cuttingTime" class="w3-input w3-border" type="number"
+             placeholder="Cutting Time in Minutes" value="">
+    </div>
+  </div><!-- /content -->
+</div><!-- /page time -->
+
+
+<div class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span class="ui-icon-loading"></span>
+  <h1>loading</h1>
+</div>
+</body></html>
